@@ -3,7 +3,7 @@ from django.shortcuts import render
 import openai
 
 def open_ai_call(message):
-    api_key = "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"
+    api_key = "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"
     openai.api_key = api_key
 
     prompt = f"You are a cool gen-z ecologist and biologist.\nUser: {message}\nAI:"
