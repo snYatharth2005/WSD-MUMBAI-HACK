@@ -1,0 +1,51 @@
+<!-- myai_app/templates/chatbot.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Waste Classification & Disposal</title>
+</head>
+<body style="background-color: #f8f9fa;">
+    <header class="bg-dark text-white text-center py-4">
+        <img src="/" alt="Logo" class="logo" style="max-width: 100px; position: absolute; top: 10px; left: 10px;">
+        <h1 class="title-font">Waste Classification & Disposal</h1>
+    </header>
+
+    <main class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <label for="user_input">Enter Material:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="user_input" id="user_input" placeholder="Enter waste...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        {% if user_input %}
+                            <hr>
+                            <p><strong>User Input:</strong> {{ user_input }}</p>
+                        {% endif %}
+
+                        {% if chatbot_response %}
+                            <h5>Chatbot Response:</h5>
+                            <p>{{ chatbot_response }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
